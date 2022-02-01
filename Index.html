@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <section class="contact" id="contact">
+
+        <h1 class="heading"> <span>contact</span> me </h1>
+    
+        <form onsubmit="sendEmail(); reset(); return false;">
+            <input id="name" type="text" placeholder="your name" class="box">
+            <input id="email" type="email" placeholder="your email" class="box">
+            <input id="subject" type="text" placeholder="subject" class="box">
+            <textarea name="" class="box" placeholder="your message" id="body" cols="30" rows="10"></textarea>
+            <input   type="submit" value="send message" class="btn">
+        </form>
+    
+    </section>
+    
+    
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    
+    <script>
+        function sendEmail(){
+    
+            Email.send({
+                Host : "smtp.gmail.com",
+                Username : "YOUR_GMAIL",
+                Password : "PASSWORD",
+                To : 'GMAIL_YOU WANT TO SEND MSGS TO',
+                From : document.getElementById('email').value,
+                Subject : document.getElementById('subject').value,
+                Body : document.getElementById('body').value + "<br><br>"+ "&nbsp;&nbsp;&nbsp;&nbsp;-" + document.getElementById('name').value,
+            }).then(
+              message => alert("Message Sent Successfully!!!")
+            );
+        }
+    
+    </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <!-- custom js file link  -->
+    <script src="js/script.js"></script>
+    
+    </body>
+    </html>
